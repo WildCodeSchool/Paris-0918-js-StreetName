@@ -20,12 +20,14 @@ export default () => {
         language: 'fr',
         countries: ['fr'],
         type: 'address',
-        insideBoundingBox:  "48.88, 2.38, 48.84, 2.25"
+        insideBoundingBox:  "48.896, 2.394, 48.84, 2.25",
+        useDeviceLocation: true,
+        aroundLatLng: true
         // Other options from https://community.algolia.com/places/documentation.html#options
       }}
  
       onChange={({ query, rawAnswer, suggestion, suggestionIndex }) => 
-        console.log('Fired when suggestion selected in the dropdown or hint was validated.')}
+        console.log('Rue sélectionné : ' + suggestion.name)}
  
       onSuggestions={({ rawAnswer, query, suggestions }) => 
         console.log('Fired when dropdown receives suggestions. You will receive the array of suggestions that are displayed.')}
