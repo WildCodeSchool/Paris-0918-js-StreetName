@@ -20,7 +20,7 @@ export default () => {
         language: 'fr',
         countries: ['fr'],
         type: 'address',
-        insidePolygon: [46.650828100116044, 7.123046875,45.17210966999772, 1.009765625,]
+        insideBoundingBox:  "48.88, 2.38, 48.84, 2.25"
         // Other options from https://community.algolia.com/places/documentation.html#options
       }}
  
