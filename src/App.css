@@ -1,63 +1,19 @@
-/* .App {
-  text-align: left;
-} */
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 50px;
-  position: absolute;
-  
-
-}
-
-.App-header {
-  background-color: #222;
-  height: 70px;
-  line-height: 70px;
-  /* padding: 20px; */
-  width: 100%;
-  color: black;
-  
-  
-}
-
-
-/* .App-title {
-  font-size: 13px;
-  margin-left: 10%;
-  color: black;
-
-} */
-
-.App-intro {
-  font-size: large;
-}
-
-.App-search {
-  margin-top:50px;
+.App {
   text-align: center;
+  background:url(http://img.over-blog-kiwi.com/0/97/04/18/20140317/ob_8385bb_toureiffel.jpg) center no-repeat; 
+  background-size: cover;
+  opacity: 0.8;
 }
 
-input {
-  height: 30px;
-  width: 60%;
-  border-radius: 1%
-}
-.logo-style{
-  float: left;
-  /* margin-left: -15%; */
-}
-.header-title {
-  text-align: center;
-  text-decoration: none;
-  color: whitesmoke;
-  font-size: 20px;
-  padding-left:45%;
-  
+.App-logosearch {
+  height: 40px;
 }
 
+.searchB {
+  margin-top: 100px;
+  height: 1000px;
+}
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+searchBar {
+  background-color: rgba(255, 255, 255, 0.3);
 }

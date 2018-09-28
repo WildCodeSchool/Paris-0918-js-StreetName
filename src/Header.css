@@ -1,0 +1,25 @@
+.App-header {
+    padding: 20px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.App-logo {
+    height: 90px;
+    margin-bottom: 10px;
+}
+
+.App-title {
+    font-size: 2em;
+    color: black
+}
+  
+.App-soustitle {
+    font-size: 1.2em;
+    color: rgb(71, 71, 70); 
+}
+
+.App-logomap {
+    height: 40px;
+    margin-top: 20px;
+}
