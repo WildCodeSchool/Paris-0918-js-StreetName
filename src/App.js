@@ -5,6 +5,8 @@ import Home from './Home';
 import Header from './Header';
 import Searchbar from './Searchbar'
 
+import * as Nominatim from 'nominatim-browser';
+
 class App extends Component {
   render() {
     return (
@@ -27,6 +29,7 @@ class App extends Component {
   <Header/>
 
   <Searchbar/>
+
 
 </div>
       
