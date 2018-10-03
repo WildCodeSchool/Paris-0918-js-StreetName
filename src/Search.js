@@ -47,7 +47,6 @@ class Search extends Component {
                 }
                 const data = await response.json()
                 //console.log(data.hits[0].locale_names);
-                console.log("kkk")
                 this.setState({ geolocplacename: data.hits[0].locale_names });
 
             } catch (error) {
@@ -61,7 +60,6 @@ class Search extends Component {
         // essaye de récuperer les coordonnées géo depuis le navigateur
         if (window.navigator && window.navigator.geolocation) {
             geolocation = window.navigator.geolocation
-            console.log("k")
         }
 
         // les coordonées sont accessibles, on les stocke dans le state 
@@ -71,10 +69,8 @@ class Search extends Component {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
                 })
-                console.log("kk"+this.state.latitude+this.state.longitude)
                 if (this.state.latitude !== '' && this.state.longitude !== ''){
                     this.getPlace(this.state.latitude, this.state.longitude)
-                    console.log("kkkk")
                 }
             }
             )
