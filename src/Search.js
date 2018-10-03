@@ -37,12 +37,31 @@ class Search extends Component {
         //console.log(api_data)
         
     }
+        // interroge une API pour faire correspondre les coordonées à un nom d'endroit
+        getPlace = async (lat, lng) => {
+            try {
 
+                const response = await fetch(`https://places-dsn.algolia.net/1/places/reverse?aroundLatLng=${lat},%20${lng}&hitsPerPage=1&language=fr`)
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                const data = await response.json()
+                //console.log(data.hits[0].locale_names);
+                console.log("kkk")
+                this.setState({ geolocplacename: data.hits[0].locale_names });
+
+            } catch (error) {
+                console.log(error);
+            }
+
+
+        }
     getLocation = (e) => {
         let geolocation = null;
         // essaye de récuperer les coordonnées géo depuis le navigateur
         if (window.navigator && window.navigator.geolocation) {
             geolocation = window.navigator.geolocation
+            console.log("k")
         }
 
         // les coordonées sont accessibles, on les stocke dans le state 
@@ -52,30 +71,18 @@ class Search extends Component {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
                 })
+                console.log("kk"+this.state.latitude+this.state.longitude)
+                if (this.state.latitude !== '' && this.state.longitude !== ''){
+                    this.getPlace(this.state.latitude, this.state.longitude)
+                    console.log("kkkk")
+                }
             }
             )
+            
         }
-        // interroge une API pour faire correspondre les coordonées à un nom d'endroit
-        const getPlace = async (lat, lng) => {
-            try {
-
-                const response = await fetch(`https://places-dsn.algolia.net/1/places/reverse?aroundLatLng=${lat},%20${lng}&hitsPerPage=1&language=fr`)
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                const data = await response.json()
-                //console.log(data.hits[0].locale_names);
-                
-                this.setState({ geolocplacename: data.hits[0].locale_names });
-
-            } catch (error) {
-                console.log(error);
-            }
+        
 
 
-        }
-        if (this.state.latitude !== '' && this.state.longitude !== '')
-            getPlace(this.state.latitude, this.state.longitude)
 
 
     };
@@ -85,7 +92,7 @@ class Search extends Component {
     return (
     
 <div>
-<button type="button" name="geoloc" type="submit" onClick={this.getLocation}>Locate Me !</button>
+<button type="button" name="geoloc" onClick={this.getLocation}>Locate Me !</button>
 
     <AlgoliaPlaces
     valeur={this.state.geolocplacename}
