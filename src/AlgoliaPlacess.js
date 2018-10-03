@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import place from 'places.js';
 
-class AlgoliaPlaces extends Component {
-  handleChange(e) {
-    this.props.onChange(e.target.valeur);
-  }
+class AlgoliaPlacess extends Component {
 
   componentDidMount() {
         
@@ -16,7 +13,7 @@ class AlgoliaPlaces extends Component {
             
     };
         
-    const optionnalPropsKeys = ['type', 'countries', 'aroundLatLng', 'aroundRadius', 'templates', 'appId', 'apiKey', 'apiKey'];
+    const optionnalPropsKeys = ['type', 'countries', 'aroundLatLng', 'aroundRadius', 'insideBoundingBox', 'templates', 'appId', 'apiKey', 'apiKey'];
         
     for (let optionnalPropKey of optionnalPropsKeys) {
       if (this.props[optionnalPropKey]) { options[optionnalPropKey] = this.props[optionnalPropKey];}
@@ -29,7 +26,6 @@ class AlgoliaPlaces extends Component {
       this.autocomplete.open()
     })
     this.autocomplete.on('change', (e) => {this.props.onChange(e)
-
     
     });
   
@@ -49,11 +45,12 @@ class AlgoliaPlaces extends Component {
   }
 }
 
-AlgoliaPlaces.propTypes = {
+AlgoliaPlacess.propTypes = {
   apiKey: PropTypes.string,
   appId: PropTypes.string,
   aroundLatLng: PropTypes.string,
   aroundRadius: PropTypes.number,
+  insideBoundingBox: PropTypes.string,
   countries: PropTypes.arrayOf(PropTypes.string),
   disabled: PropTypes.bool,
   language: PropTypes.string,
@@ -63,14 +60,13 @@ AlgoliaPlaces.propTypes = {
   useDeviceLocation: PropTypes.bool,
 };
 
-AlgoliaPlaces.defaultProps = {
+AlgoliaPlacess.defaultProps = {
   disabled: false,
   language: navigator.language,
   useDeviceLocation: false,
-  onChange: (e) => {console.log(e)
-  },
+  onChange: (e) => {console.log(e)},
 
     
 };
 
-export default AlgoliaPlaces;
+export default AlgoliaPlacess;

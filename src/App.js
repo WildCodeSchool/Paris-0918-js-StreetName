@@ -1,39 +1,17 @@
-import React, { Component } from 'react';
-import "./App.css";
-//import { Route, BrowserRouter, Switch, NavLink } from 'react-router-dom';
-import Home from './Home';
-import Header from './Header';
+import React, { Component } from 'react'
 import Search from './Search'
-import Location from './Location'
+import './App.css'
 
-import * as Nominatim from 'nominatim-browser';
 
-let value =''
+
 class App extends Component {
-  render() {
+  
+  render(){
     return (
-      /*
-      <BrowserRouter>
-      <div>
-            <NavLink to="/"> Accueil </NavLink>
-          
-      <div>
-            <NavLink to="/header"> Header </NavLink>
+      <div className="App">
+      <Search/>
+       
       </div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/header" component={Header} />
-        </Switch>
-        </div>
-      </BrowserRouter>*/
-<div>
-
-  <Header/>
-  <Search/>
-
-
-</div>
-      
     );
   }
 }

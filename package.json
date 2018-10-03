@@ -1,5 +1,5 @@
 {
-  "name": "street-name-paris",
+  "name": "street_name_paris",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
