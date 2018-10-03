@@ -45,11 +45,12 @@ class Search extends Component {
             
             
         }
-        getPlace(this.state.latitude,this.state.longitude)
+        if (this.state.latitude !== '' && this.state.longitude !== '')
+            getPlace(this.state.latitude,this.state.longitude)
            
         
      };
-     myLocation = this.getLocation();
+     //myLocation = this.getLocation();
 
   render() {
 
@@ -70,10 +71,10 @@ class Search extends Component {
         countries: ['fr'],
         type: 'address',
         insideBoundingBox:  "48.896, 2.394, 48.84, 2.25",
-        useDeviceLocation: true,
+        useDeviceLocation: false,
         aroundLatLng: false,
         aroundRadius: 1,
-        aroundLatLngViaIP: true
+        aroundLatLngViaIP: false
         // Other options from https://community.algolia.com/places/documentation.html#options
       }}
  

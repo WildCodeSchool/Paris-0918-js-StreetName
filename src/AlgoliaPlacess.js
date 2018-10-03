@@ -28,7 +28,6 @@ class AlgoliaPlaces extends Component {
       this.autocomplete.setVal(this.props.valeur)
       this.autocomplete.open()
     })
-    this.autocomplete.open() 
     this.autocomplete.on('change', (e) => {this.props.onChange(e)
 
     
