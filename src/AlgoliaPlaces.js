@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Places from 'places.js';
+// Implémentation de l'API algolia récupéré depuis https://github.com/kontrollanten/algolia-places-react/
 
-export default class AlgoliaPlacesss extends React.Component {
+export default class AlgoliaPlaces extends React.Component {
   static propTypes = {
     /** Placeholder for input field. */
     placeholder: PropTypes.string,
