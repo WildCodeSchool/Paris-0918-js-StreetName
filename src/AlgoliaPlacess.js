@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import place from 'places.js';
 
 class AlgoliaPlaces extends Component {
-    
+  handleChange(e) {
+    this.props.onChange(e.target.valeur);
+  }
 
   componentDidMount() {
         
@@ -20,10 +22,14 @@ class AlgoliaPlaces extends Component {
       if (this.props[optionnalPropKey]) { options[optionnalPropKey] = this.props[optionnalPropKey];}
     }
         
-    const autocomplete = place(options);
-    
-    autocomplete.open() 
-    autocomplete.on('change', (e) => {this.props.onChange(e)
+    this.autocomplete = place(options);
+    const geol = document.querySelector('button')
+    geol.addEventListener("click",(event)=>{
+      this.autocomplete.setVal(this.props.valeur)
+      this.autocomplete.open()
+    })
+    this.autocomplete.open() 
+    this.autocomplete.on('change', (e) => {this.props.onChange(e)
 
     
     });
@@ -63,7 +69,6 @@ AlgoliaPlaces.defaultProps = {
   language: navigator.language,
   useDeviceLocation: false,
   onChange: (e) => {console.log(e)
-  
   },
 
     
