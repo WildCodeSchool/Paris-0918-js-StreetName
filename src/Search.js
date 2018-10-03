@@ -4,22 +4,21 @@ import "./App.css";
 
 import AlgoliaPlacess from './AlgoliaPlacess';
 
-
-
 class Search extends Component {
 
     state = {
-        latitude: '48.845956',
-        longitude: '2.354859',
+        latitude: '',
+        longitude: '',
         datas: ''
       };
-    
-    
-    ComponentDidMount() {
-        const pos = {};
-        const geolocation = window.navigator.geolocation;
-        let latitude = null;
-        let longitude = null;
+
+    getLocation = (e) =>{
+        let geolocation = null;
+
+        if (window.navigator && window.navigator.geolocation) {
+            geolocation = window.navigator.geolocation
+        }
+
         if (geolocation) {
            geolocation.getCurrentPosition( (position) =>{
             this.setState({latitude : position.coords.latitude,
@@ -27,49 +26,6 @@ class Search extends Component {
                        })
                     }
                 )
-        }
-
-
-    
-
-        
-    }
-    getMyLocation = (e) => {
-        let location = null;
-        let latitude = null;
-        let longitude = null;
-        if (window.navigator && window.navigator.geolocation) {
-            location = window.navigator.geolocation
-        }
-        if (location) {
-            location.getCurrentPosition( (position) =>{
-                this.setState({latitude : position.coords.latitude,
-                longitude : position.coords.longitude
-                           })
-                        }
-                    )}
-
-        console.log('OK')
-        //this.getPlace(e,this.state.latitude,this.state.longitude)
-        //console.log(this.state.datas);
-
-      
-        
-    }
-    getLocation = (e) =>{
-        const pos = {};
-        const geolocation = window.navigator.geolocation;
-        let latitude = null;
-        let longitude = null;
-        if (geolocation) {
-           geolocation.getCurrentPosition(function (position) {
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
-            console.log(latitude);
-            console.log(longitude);
-            pos.lat = latitude;
-            pos.lng = longitude;
-        })
         }
 
         const getPlace = async (lat, lng) => {
@@ -90,14 +46,8 @@ class Search extends Component {
             
         }
         getPlace(this.state.latitude,this.state.longitude)
-        
-          
            
-
         
-        function showEror(){console.log(Error)}
-        
-        return pos;
      };
      myLocation = this.getLocation();
 
