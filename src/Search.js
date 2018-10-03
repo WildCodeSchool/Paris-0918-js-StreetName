@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./App.css";
-import AlgoliaPlacess from './AlgoliaPlacess';
+import AlgoliaPlaces from './AlgoliaPlaces';
 import PanameStreet from './PanameStreet';
 
 class Search extends Component {
@@ -72,7 +72,7 @@ class Search extends Component {
 <div>
 <button type="button" name="geoloc" type="submit" onClick={this.getLocation}>Locate Me !</button>
 
-    <AlgoliaPlacess
+    <AlgoliaPlaces
     valeur={this.state.geolocplacename}
     placeholder='Nom de ta rue ...'
  
