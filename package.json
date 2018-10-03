@@ -4,12 +4,9 @@
   "private": true,
   "dependencies": {
     "algolia-places-react": "^1.3.0",
-    "axios": "^0.18.0",
-    "downshift": "^2.2.3",
     "nominatim-browser": "^2.0.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-geolookup": "^1.1.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5"
   },

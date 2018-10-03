@@ -1,17 +1,13 @@
 import React from 'react';
-import AlgoliaPlaces from 'algolia-places-react';
+import AlgoliaPlaces from './AlgoliaPlaces';
  
-const boundingBox = [
-// P1 lat, lng
-46.650828100116044, 7.123046875,
-// P2 lat, lng
-45.17210966999772, 1.009765625,
-  ];
 
-  
 export default () => {
   return (
     <AlgoliaPlaces
+    container= 'id_city'
+ 
+    valeurr='eee'
       placeholder='Nom de ta rue ...'
  
       options={{
@@ -22,7 +18,9 @@ export default () => {
         type: 'address',
         insideBoundingBox:  "48.896, 2.394, 48.84, 2.25",
         useDeviceLocation: true,
-        aroundLatLng: true
+        aroundLatLng: false,
+        aroundRadius: 1,
+        aroundLatLngViaIP: true
         // Other options from https://community.algolia.com/places/documentation.html#options
       }}
  

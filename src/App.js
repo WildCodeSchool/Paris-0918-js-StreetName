@@ -3,10 +3,12 @@ import "./App.css";
 //import { Route, BrowserRouter, Switch, NavLink } from 'react-router-dom';
 import Home from './Home';
 import Header from './Header';
-import Searchbar from './Searchbar'
+import Search from './Search'
+import Location from './Location'
 
 import * as Nominatim from 'nominatim-browser';
 
+let value =''
 class App extends Component {
   render() {
     return (
@@ -27,8 +29,7 @@ class App extends Component {
 <div>
 
   <Header/>
-
-  <Searchbar/>
+  <Search/>
 
 
 </div>
