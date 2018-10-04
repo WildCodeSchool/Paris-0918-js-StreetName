@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./App.css";
-import AlgoliaPlacess from './AlgoliaPlacess';
+import AlgoliaPlaces from './AlgoliaPlaces';
 import PanameStreet from './PanameStreet';
 
 class Search extends Component {
@@ -11,38 +11,34 @@ class Search extends Component {
         geolocplacename: '',
         streetstory: '',
         streetname: '',
+        error: false
     };
 
 
     getStreetHistory = async (e) => {
         const input_rue = e.suggestion.name
-        const truc_api = await fetch(`https://opendata.paris.fr/api/records/1.0/search/?dataset=voiesactuellesparis2012&q=${input_rue}&facet=typvoie&facet=date_arret&facet=quartier&facet=arron`)
-        const api_data = await truc_api.json()
-        //console.log(api_data)
-        this.setState({
-            streetstory: api_data.records[0].fields.histo,
-            streetname: api_data.records[0].fields.nomvoie
-        })
-    }
-
-    getLocation = (e) => {
-        let geolocation = null;
-
-        if (window.navigator && window.navigator.geolocation) {
-            geolocation = window.navigator.geolocation
-        }
-
-        if (geolocation) {
-            geolocation.getCurrentPosition((position) => {
-                this.setState({
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
-                })
+        try {
+            const truc_api = await fetch(`https://opendata.paris.fr/api/records/1.0/search/?dataset=voiesactuellesparis2012&q=${input_rue}&facet=typvoie&facet=date_arret&facet=quartier&facet=arron`)
+            // dans le cas où la requete api échoue, afficher une erreur 
+            if (!truc_api.ok) {
+                this.setState({error: true});
+                throw Error(truc_api.statusText);
             }
-            )
-        }
+            const api_data = await truc_api.json()
+            // stocke la réponse api dans le state
+            this.setState({
+                streetstory: api_data.records[0].fields.histo,
+                streetname: api_data.records[0].fields.nomvoie
+            })
+        } catch (error) {
+            this.setState({error: true});
 
-        const getPlace = async (lat, lng) => {
+        }
+        //console.log(api_data)
+        
+    }
+        // interroge une API pour faire correspondre les coordonées à un nom d'endroit
+        getPlace = async (lat, lng) => {
             try {
 
                 const response = await fetch(`https://places-dsn.algolia.net/1/places/reverse?aroundLatLng=${lat},%20${lng}&hitsPerPage=1&language=fr`)
@@ -59,8 +55,30 @@ class Search extends Component {
 
 
         }
-        if (this.state.latitude !== '' && this.state.longitude !== '')
-            getPlace(this.state.latitude, this.state.longitude)
+    getLocation = (e) => {
+        let geolocation = null;
+        // essaye de récuperer les coordonnées géo depuis le navigateur
+        if (window.navigator && window.navigator.geolocation) {
+            geolocation = window.navigator.geolocation
+        }
+
+        // les coordonées sont accessibles, on les stocke dans le state 
+        if (geolocation) {
+            geolocation.getCurrentPosition((position) => {
+                this.setState({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                })
+                if (this.state.latitude !== '' && this.state.longitude !== ''){
+                    this.getPlace(this.state.latitude, this.state.longitude)
+                }
+            }
+            )
+            
+        }
+        
+
+
 
 
     };
@@ -70,9 +88,9 @@ class Search extends Component {
     return (
     
 <div>
-<button type="button" name="geoloc" type="submit" onClick={this.getLocation}>Locate Me !</button>
+<button type="button" name="geoloc" onClick={this.getLocation}>Locate Me !</button>
 
-    <AlgoliaPlacess
+    <AlgoliaPlaces
     valeur={this.state.geolocplacename}
     placeholder='Nom de ta rue ...'
  
@@ -84,7 +102,6 @@ class Search extends Component {
         type: 'address',
         insideBoundingBox:  "48.896, 2.394, 48.84, 2.25",
         useDeviceLocation: false,
-        aroundLatLng: false,
         aroundLatLngViaIP: false
         // Other options from https://community.algolia.com/places/documentation.html#options
       }}
@@ -113,10 +130,11 @@ class Search extends Component {
         console.log('Fired when we could not make the request to Algolia Places servers for any reason but reaching your rate limit.')
     }
      />
-
+    
        <PanameStreet 
         streetstory={this.state.streetstory}
         streetname={this.state.streetname}
+        error={this.state.error}
 />
 
 </div>
