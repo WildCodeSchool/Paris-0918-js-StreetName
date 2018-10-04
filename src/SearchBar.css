@@ -1,0 +1,11 @@
+.ap-input {
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ccc;
+  }
+
+.ap-icon-pin {
+    display: none;
+}
+

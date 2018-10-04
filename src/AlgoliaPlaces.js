@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Places from 'places.js';
+import "./SearchBar.css";
+import Grid from '@material-ui/core/Grid';
 // Implémentation de l'API algolia récupéré depuis https://github.com/kontrollanten/algolia-places-react/
 
 export default class AlgoliaPlaces extends React.Component {
@@ -114,12 +116,18 @@ export default class AlgoliaPlaces extends React.Component {
 
     return (
       <div>
+        <Grid container>
+        <Grid item xs></Grid>
+        <Grid item xs={9}>
         <input
           type="text"
           aria-label={this.props.placeholder}
           ref={(ref) => { this.autocompleteElem = ref; }}
           {...inputProps}
         />
+        </Grid>
+        <Grid item xs></Grid>
+        </Grid>
       </div>
     );
   }
