@@ -25,11 +25,15 @@ class Search extends Component {
                 throw Error(truc_api.statusText);
             }
             const api_data = await truc_api.json()
+
             // stocke la réponse api dans le state
             this.setState({
                 streetstory: api_data.records[0].fields.histo,
-                streetname: api_data.records[0].fields.nomvoie
+                streetname: api_data.records[0].fields.nomvoie,
+                error: false,
             })
+     
+            
         } catch (error) {
             this.setState({error: true});
 
@@ -88,7 +92,7 @@ class Search extends Component {
     return (
     
 <div>
-<button type="button" name="geoloc" onClick={this.getLocation}>Locate Me !</button>
+<button type="button" class="geoloc" onClick={this.getLocation}>Locate Me !</button>
 
     <AlgoliaPlaces
     valeur={this.state.geolocplacename}
