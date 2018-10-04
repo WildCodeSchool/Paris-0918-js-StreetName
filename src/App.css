@@ -22,17 +22,11 @@
   font-size: large;
 }
 
-<<<<<<< HEAD
 .App-search {
   margin-top:50px;
   text-align: center;
 }
 
-.ap-input {
-  height: 30px;
-  width: 100%;
-  border-radius: 1%
-}
 .logo-style{
   float: left;
   /* margin-left: -15%; */
@@ -42,13 +36,11 @@
   text-decoration: none;
   color: whitesmoke;
   font-size: 20px;
-  padding-left:45%;
+  padding-left: 45%;
   
 }
 
 
-=======
->>>>>>> origin/dev
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
