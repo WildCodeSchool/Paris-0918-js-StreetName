@@ -71,7 +71,7 @@ export default class AlgoliaPlaces extends React.Component {
       container: this.autocompleteElem,
     });
     const geol = document.querySelector('button')
-    geol.addEventListener("mouseleave",(event)=>{
+    geol.addEventListener("mouseup", (event) => {
       this.autocomplete.setVal(this.props.valeur)
       this.autocomplete.open()
     })
