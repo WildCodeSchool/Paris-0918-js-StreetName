@@ -49,6 +49,14 @@
 
 =======
 >>>>>>> origin/dev
+
+/*background*/
+.bg_img{
+  width: 100%;
+  opacity: 0.8;
+}
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
