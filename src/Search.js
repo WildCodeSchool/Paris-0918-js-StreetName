@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import AlgoliaPlaces from "./AlgoliaPlaces";
-import DescriptionModal from "./DescriptionModal";
+import DescriptionStory from "./DescriptionStory/DescriptionStory";
 
 class Search extends Component {
   state = {
@@ -131,7 +131,7 @@ class Search extends Component {
           }
         />
 
-        <DescriptionModal
+        <DescriptionStory
           streetstory={this.state.streetstory}
           streetname={this.state.streetname}
           error={this.state.error}

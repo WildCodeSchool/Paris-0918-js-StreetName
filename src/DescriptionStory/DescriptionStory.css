@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "Nova Flat";
+  src: url("../Police/NovaFlat/NovaFlat.eot?") format("eot"),
+    url("../Police/NovaFlat/NovaFlat.woff") format("woff"),
+    url("../Police/NovaFlat/NovaFlat.ttf") format("truetype"),
+    url("../Police/NovaFlat/NovaFlat.svg#NovaFlat") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aubrey";
+  src: url("../Police/Aubrey/AUBREY1__.eot?") format("eot"), 
+    url("../Police/Aubrey/AUBREY1__.woff") format("woff"),
+    url("../Police/Aubrey/AUBREY1__.ttf") format("truetype"),
+    url("../Police/Aubrey/AUBREY1__.svg#Aubrey") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.result {
+  width: 70%;
+  margin-left: 10%;
+  margin-top: 8%;
+  padding: 5%;
+  font-size: 1.3em;
+  border: 3px #ccc solid;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #ccc;
+  background: rgba(175, 88, 70, 0.4);
+  font-family: "Nova Flat";
+}
+
+h1{
+  letter-spacing: 5px;
+  font-family: "Aubrey";
+}
