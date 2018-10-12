@@ -1,32 +1,88 @@
-.App {
-  text-align: center;
+
+.background_img{
+  height: 100vh;
+  width: 100vw;
+  background: url('http://hdqwalls.com/wallpapers/eiffel-tower-paris-city-autumn-4k-5k-n4.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.btn_search{
+  top: 1%;
+  margin-left: 90%;
+  background-color: transparent;
+  color: #FFF;
+  width: 60px;
+  height: 25px;
+  outline-style: none;
+  border: none;
+  border-bottom: 1px solid aqua;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.img_bg {
+  height: 100%;
+  width: 60%;
+  left: 20%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* box-shadow: 8px 8px 20px rgba(0,0,0,0.7); */
+  position: absolute;
 }
 
-.App-link {
-  color: #61dafb;
+.black_bg {
+  background-color: #0c0c0c;
+  height: 78vh;
+  width: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 8px 8px 20px rgba(0,0,0,0.7);
+  position: absolute;
+}
+ .input_design{
+   /* background-color: #fff;
+   margin-left: 60%;
+   margin-top: 2%;
+   border-radius: 0;
+   border: none; */
+   margin-left: 55%;
+   margin-top: 2%;
+   font-size:18px;
+   /* padding:10px 10px 10px 5px; */
+   background-color: transparent;
+   display:block;
+   width:260px;
+   border:none;
+   border-bottom:1px solid #757575;
+   color: #FFF;
+ }
+
+
+
+.input_design:focus{
+  outline: none;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.color_text {
+  margin-left: 51%;
+  color: #fff;
+}
+input:-webkit-autofill, 
+textarea:-webkit-autofill, 
+select:-webkit-autofill {background: black;color: white }
+
+p {
+  font-size: 12px; 
+}
+
+h1{
+  font-size: 20px;
 }
