@@ -11,6 +11,7 @@ class DescriptionStory extends React.Component {
           Pas de correspondance trouvé.
         </div>
       );
+      
     else
       return (
         <div>
