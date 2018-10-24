@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import AlgoliaPlaces from "./AlgoliaPlaces";
-import DescriptionStory from "./DescriptionStory/DescriptionStory";
+import { Redirect } from 'react-router-dom';
+
 
 
 class Search extends Component {
@@ -11,7 +12,9 @@ class Search extends Component {
     geolocplacename: "",
     streetstory: "",
     streetname: "",
-    error: false
+    error: false,
+    responseDisplay: false,
+
   };
 
   getStreetHistory = async e => {
@@ -20,7 +23,7 @@ class Search extends Component {
       const response = await fetch(
         `https://opendata.paris.fr/api/records/1.0/search/?dataset=voiesactuellesparis2012&q=${input_rue}&facet=typvoie&facet=date_arret&facet=quartier&facet=arron`
       );
-      
+
       if (!response.ok) { // dans le cas où la requete api échoue, afficher une erreur
         this.setState({ error: true });
         throw Error(response.statusText);
@@ -29,15 +32,17 @@ class Search extends Component {
       const api_data = await response.json();
       this.setState({
         streetstory: api_data.records[0].fields.histo,
-        streetname: api_data.records[0].fields.nomvoie,
-        error: false
+        streetname: api_data.records[0].fields.typo,
+        error: false,
+        responseDisplay: true
       });
-    } 
+      console.log('ok')
+    }
     catch (error) {
       this.setState({ error: true });
     }
   };
-  
+
   getPlace = async (lat, lng) => { // interroge une API pour faire correspondre les coordonées à un nom d'endroit
     try {
       const response = await fetch(
@@ -50,7 +55,7 @@ class Search extends Component {
 
       const data = await response.json();
       this.setState({ geolocplacename: data.hits[0].locale_names });
-    } 
+    }
     catch (error) {
       console.log(error);
     }
@@ -58,7 +63,7 @@ class Search extends Component {
 
   getLocation = e => {
     let geolocation = null;
-   
+
     if (window.navigator && window.navigator.geolocation) { // essaye de récuperer les coordonnées géo depuis le navigateur
       geolocation = window.navigator.geolocation;
     }
@@ -115,13 +120,9 @@ class Search extends Component {
             });
           }}
         />
-
-        <DescriptionStory
-          streetstory={this.state.streetstory}
-          streetname={this.state.streetname}
-          error={this.state.error}
-        />
+        {this.state.responseDisplay && <Redirect to={`/${this.state.streetname}`} />}
         
+
       </div>
     );
   }
