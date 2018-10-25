@@ -37,7 +37,16 @@
   color: whitesmoke;
   font-size: 20px;
   padding-left: 45%;
-  
+}
+
+.bgIMG {
+      height: 97.4vh;
+    width: 100%;
+    background: url('./image/imagefond.jpg');
+    opacity: 0.9;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-color: yellowgreen; */
 }
 
 
