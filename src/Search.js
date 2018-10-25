@@ -14,7 +14,7 @@ class Search extends Component {
     streetname: "",
     error: false,
     responseDisplay: false,
-
+    coord: ""
   };
 
   getStreetHistory = async e => {
@@ -34,7 +34,8 @@ class Search extends Component {
         streetstory: api_data.records[0].fields.histo,
         streetname: api_data.records[0].fields.typo,
         error: false,
-        responseDisplay: true
+        responseDisplay: true,
+        coord:e.suggestion.latlng.lat+','+e.suggestion.latlng.lng
       });
       console.log('ok')
     }
@@ -120,7 +121,7 @@ class Search extends Component {
             });
           }}
         />
-        {this.state.responseDisplay && <Redirect to={`/${this.state.streetname}`} />}
+        {this.state.responseDisplay && <Redirect to={`/${this.state.streetname}/${this.state.coord}`} />}
         
 
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import logo from './317354-200.png';
-import logoMap from './baseline-map-24px.svg';
+
 import './Header.css';
 
 
@@ -20,10 +20,8 @@ class Header extends Component {
                         <h1 className="Style-soustitle">Ta rue a une histoire</h1> 
                     </Grid>
 
-                    <Grid item xs={2}>                       
-                        <img src={logoMap} className="Style-logoMap" alt="logoMap" />
+                    <Grid item xs={2}>
                     </Grid>
-
                 </Grid>
             </header>
         );

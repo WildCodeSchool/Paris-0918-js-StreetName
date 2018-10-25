@@ -18,6 +18,10 @@
   font-style: normal;
 }
 
+.map {
+  margin-left: 16%;
+}
+
 .result {
   width: 70%;
   margin-left: 10%;
