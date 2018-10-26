@@ -6,7 +6,8 @@ import './App.css';
 class App extends Component {
   state = {
     streetname : undefined,
-    streetstory : undefined
+    streetstory : undefined,
+    arrondis : 'init',
   }
 
 
@@ -26,8 +27,9 @@ class App extends Component {
     return (
       <div>
         <div className="background_img"></div>
+        
         <div className="black_bg">
-        <img src="http://hdqwalls.com/wallpapers/eiffel-tower-paris-city-autumn-4k-5k-n4.jpg" className="img_bg"/>
+        <img src={require(`./photo/Paris_${this.state.arrondis.split(',')[0]}.jpg`)} className="img_bg"/>
         <StreetName getStreetName={this.getStreetName} />
        <PanameStreet 
         streetstory={this.state.streetstory}
