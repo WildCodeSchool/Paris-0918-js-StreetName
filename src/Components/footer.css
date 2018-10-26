@@ -1,0 +1,14 @@
+.footerstyle{
+    background-color: rgb(29, 29, 29);
+    height: 20px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    
+    
+}
+
+.heart{
+    color: red;
+}

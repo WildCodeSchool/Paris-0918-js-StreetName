@@ -1,4 +1,19 @@
 import React, { Component } from "react";
+import './Displayhisto.css';
+
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+// material UI
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+   
+  });
+// FIN material UI
+
+
 
 class DisplayHisto extends Component {
     state = {
@@ -17,11 +32,18 @@ class DisplayHisto extends Component {
   render() {
 
     let readText = "";
-    this.state.readButtonState ? readText = "Read More" : readText = "Read Less";
+    this.state.readButtonState ? readText = "En savoir plus" : readText = "Réduire";
+
+    // material UI
+    const { classes } = this.props;
+    // FIN MATERIAL UI
 
     return (
-      <div>
-        <button onClick={this.switchHisto}>{readText}</button>
+      <div className='styleresult'>
+       <Button variant="outlined" color="primary" className={classes.button}  onClick={this.switchHisto}>{readText}
+        
+      </Button>
+        
         {this.state.renderHisto &&
         <div>
             <hr/>
@@ -33,4 +55,4 @@ class DisplayHisto extends Component {
   }
 }
 
-export default DisplayHisto;
+export default withStyles(styles) (DisplayHisto);

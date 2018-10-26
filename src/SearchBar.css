@@ -1,11 +1,15 @@
 .ap-input {
+    background-color: transparent;
     height: 30px;
     width: 100%;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px #ccc;
+    border: none;
+    border-bottom: 1px solid white;
+    
   }
 
 .ap-icon-pin {
     display: none;
 }
-
+input::placeholder{
+    color: black;
+}
