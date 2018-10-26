@@ -98,15 +98,15 @@ class DescriptionStory extends React.Component {
     // fin material ui
 
     return (
-    
-        
-      
+
+
+
 
       <div className="DescriptionStory">
-       <Link to="/">
-       <Search />
+        <Link to="/">
+          <Search />
         </Link>
-       
+
         {this.state.infoDisplay && (
           <div className="result">
             <CardMedia
@@ -118,23 +118,27 @@ class DescriptionStory extends React.Component {
             <h2>Origine</h2>
             <p>{this.state.dataOrigine}</p>
 
-            <Grid container>
-              <Grid item xs={10} justify="flex-start">
-                <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
-              </Grid>
-              <Grid item xs={2} justify="flex-end">
-                <DisplayMap latlng={this.state.mapState} />
-              </Grid>
-            </Grid>
+              <br>
+              </br>
+            <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
+            
+            <div className="bouttongeo">
+              <DisplayMap latlng={this.state.mapState} />
+            
+            </div>
+            <br>
+              </br>
+              <br>
+              </br>
           </div>
-
+          
         )}
 
         <Modal
           open={this.state.open}
           onClose={this.handleClose}
         >
-            <img style={getModalStyle()} src={require(`../Images/Paris_${this.state.dataArron}.jpg`)} /> 
+          <img style={getModalStyle()} src={require(`../Images/Paris_${this.state.dataArron}.jpg`)} />
         </Modal>
       </div>
     );
