@@ -1,9 +1,8 @@
 import React from 'react'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import './Maps.css';
 
 const styles = theme => ({
@@ -38,7 +37,6 @@ class SimpleExample extends React.Component {
   render() {
 
     const position = this.state.latlng.split(',');
-    const { classes } = this.props;
 
 
     if (this.state.latlng) {
