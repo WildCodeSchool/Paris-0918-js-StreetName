@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import AlgoliaPlaces from "./AlgoliaPlaces";
 import { Redirect } from 'react-router-dom';
+import Buttongeolocalisation from './Components/buttongeolocalisation';
 
 
 
@@ -85,11 +86,15 @@ class Search extends Component {
   };
 
   render() {
+    console.log(this.state.geolocplacename)
     return (
       <div>
-        <button type="button" className="geoloc" onClick={this.getLocation}>
+        {/* <button type="button" className="geoloc" >
           Locate Me !
-        </button>
+        </button> */}
+        <div className="locolisationRight" onClick={this.getLocation}>
+              <Buttongeolocalisation />
+            </div>
 
         <AlgoliaPlaces
           valeur={this.state.geolocplacename}

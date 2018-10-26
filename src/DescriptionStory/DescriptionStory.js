@@ -3,16 +3,24 @@ import "./DescriptionStory.css";
 import { Link } from "react-router-dom";
 import DisplayHisto from "./DisplayHisto";
 import DisplayMap from "./DisplayMap";
-import { withStyles } from '@material-ui/core/styles';
-import { CardMedia, Modal } from '@material-ui/core';
+import { Grid, Button, CardMedia, Modal } from '@material-ui/core';
+import Search from '../Search';
 
+import { withStyles } from '@material-ui/core/styles';
+import Autorenew from '@material-ui/icons/Autorenew';
+
+// material ui
 const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit,
+  },
   media: {
     height: 210,
   },
 });
-
-
 
 function getModalStyle() {
   return {
@@ -20,6 +28,7 @@ function getModalStyle() {
     width: '70%'
   };
 }
+// fin material ui
 
 class DescriptionStory extends React.Component {
   state = {
@@ -97,12 +106,20 @@ class DescriptionStory extends React.Component {
           </div>
         </div>
       );
+    // material ui
+    const { classes } = this.props;
+    // fin material ui
 
     return (
+    
+        
+      
+
       <div className="DescriptionStory">
-        <Link to="/">
-          <button type="button">Nouvelle recherche</button>
+       <Link to="/">
+       <Search />
         </Link>
+       
         {this.state.infoDisplay && (
           <div className="result">
             <CardMedia
@@ -113,8 +130,14 @@ class DescriptionStory extends React.Component {
             />
             <h2>Origine</h2>
             <p>{this.state.dataOrigine}</p>
-            <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
-            <DisplayMap latlng={this.state.mapState} />
+            <Grid container>
+              <Grid item xs={10} justify="flex-start">
+                <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
+              </Grid>
+              <Grid item xs={2} justify="flex-end">
+                <DisplayMap latlng={this.state.mapState} />
+              </Grid>
+            </Grid>
           </div>
 
         )}
@@ -129,4 +152,5 @@ class DescriptionStory extends React.Component {
     );
   }
 }
+
 export default withStyles(styles)(DescriptionStory);
