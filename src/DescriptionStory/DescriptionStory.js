@@ -3,6 +3,14 @@ import "./DescriptionStory.css";
 import { Link } from "react-router-dom";
 import DisplayHisto from "./DisplayHisto";
 import DisplayMap from "./DisplayMap";
+import { withStyles } from '@material-ui/core/styles';
+import { CardMedia } from '@material-ui/core';
+
+const styles = theme => ({
+  media: {
+    height: 210,
+  },
+});
 
 class DescriptionStory extends React.Component {
   state = {
@@ -10,13 +18,14 @@ class DescriptionStory extends React.Component {
     dataOrigine: undefined,
     dataHistorique: undefined,
     dataMonuments: undefined,
-    infoDisplay: false
+    infoDisplay: false,
+    dataArron: undefined
   };
 
   async componentWillMount() {
     const result = await fetch(
       `https://opendata.paris.fr/api/records/1.0/search/?dataset=voiesactuellesparis2012&q=${
-        this.props.match.params.typo
+      this.props.match.params.typo
       }`
     );
     const data = await result.json();
@@ -51,7 +60,8 @@ class DescriptionStory extends React.Component {
       dataOrigine: origine,
       dataHistorique: historique,
       dataMonuments: monuments,
-      infoDisplay: true
+      infoDisplay: true,
+      dataArron: data.records[0].fields.arron.split(',')[0]
     });
   }
 
@@ -79,10 +89,15 @@ class DescriptionStory extends React.Component {
         </Link>
         {this.state.infoDisplay && (
           <div className="result">
+            <CardMedia
+              className={this.props.classes.media}
+              image={require(`../Images/Paris_${this.state.dataArron}.jpg`)}
+              title={`Paris ${this.state.dataArron} arrondissement`}
+            />
             <h2>Origine</h2>
             <p>{this.state.dataOrigine}</p>
-            <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments}/>
-            <DisplayMap latlng={this.state.mapState}/>
+            <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
+            <DisplayMap latlng={this.state.mapState} />
           </div>
         )}
       </div>
@@ -90,4 +105,4 @@ class DescriptionStory extends React.Component {
   }
 }
 
-export default DescriptionStory;
+export default withStyles(styles)(DescriptionStory);
