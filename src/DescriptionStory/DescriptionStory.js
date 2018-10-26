@@ -4,13 +4,22 @@ import { Link } from "react-router-dom";
 import DisplayHisto from "./DisplayHisto";
 import DisplayMap from "./DisplayMap";
 import { withStyles } from '@material-ui/core/styles';
-import { CardMedia } from '@material-ui/core';
+import { CardMedia, Modal } from '@material-ui/core';
 
 const styles = theme => ({
   media: {
     height: 210,
   },
 });
+
+
+
+function getModalStyle() {
+  return {
+    transform: 'translate(14vw, 5%)',
+    width: '70%'
+  };
+}
 
 class DescriptionStory extends React.Component {
   state = {
@@ -19,7 +28,8 @@ class DescriptionStory extends React.Component {
     dataHistorique: undefined,
     dataMonuments: undefined,
     infoDisplay: false,
-    dataArron: undefined
+    dataArron: undefined,
+    open: false,
   };
 
   async componentWillMount() {
@@ -65,7 +75,13 @@ class DescriptionStory extends React.Component {
     });
   }
 
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
 
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   render() {
     if (!this.state.infoDisplay)
@@ -93,16 +109,24 @@ class DescriptionStory extends React.Component {
               className={this.props.classes.media}
               image={require(`../Images/Paris_${this.state.dataArron}.jpg`)}
               title={`Paris ${this.state.dataArron} arrondissement`}
+              onClick={this.handleOpen}
             />
             <h2>Origine</h2>
             <p>{this.state.dataOrigine}</p>
             <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
             <DisplayMap latlng={this.state.mapState} />
           </div>
+
         )}
+
+        <Modal
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+            <img style={getModalStyle()} src={require(`../Images/Paris_${this.state.dataArron}.jpg`)} /> 
+        </Modal>
       </div>
     );
   }
 }
-
 export default withStyles(styles)(DescriptionStory);
