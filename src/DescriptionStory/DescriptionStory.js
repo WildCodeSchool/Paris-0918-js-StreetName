@@ -3,7 +3,7 @@ import "./DescriptionStory.css";
 import { Link } from "react-router-dom";
 import DisplayHisto from "./DisplayHisto";
 import DisplayMap from "./DisplayMap";
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, CardMedia, Modal } from '@material-ui/core';
 import Search from '../Search';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -17,8 +17,17 @@ const styles = theme => ({
   extendedIcon: {
     marginRight: theme.spacing.unit,
   },
+  media: {
+    height: 210,
+  },
 });
 
+function getModalStyle() {
+  return {
+    transform: 'translate(14vw, 5%)',
+    width: '70%'
+  };
+}
 // fin material ui
 
 class DescriptionStory extends React.Component {
@@ -27,7 +36,9 @@ class DescriptionStory extends React.Component {
     dataOrigine: undefined,
     dataHistorique: undefined,
     dataMonuments: undefined,
-    infoDisplay: false
+    infoDisplay: false,
+    dataArron: undefined,
+    open: false,
   };
 
   async componentWillMount() {
@@ -68,11 +79,18 @@ class DescriptionStory extends React.Component {
       dataOrigine: origine,
       dataHistorique: historique,
       dataMonuments: monuments,
-      infoDisplay: true
+      infoDisplay: true,
+      dataArron: data.records[0].fields.arron.split(',')[0]
     });
   }
 
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
 
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   render() {
     if (!this.state.infoDisplay)
@@ -104,6 +122,12 @@ class DescriptionStory extends React.Component {
        
         {this.state.infoDisplay && (
           <div className="result">
+            <CardMedia
+              className={this.props.classes.media}
+              image={require(`../Images/Paris_${this.state.dataArron}.jpg`)}
+              title={`Paris ${this.state.dataArron} arrondissement`}
+              onClick={this.handleOpen}
+            />
             <h2>Origine</h2>
             <p>{this.state.dataOrigine}</p>
             <Grid container>
@@ -115,7 +139,15 @@ class DescriptionStory extends React.Component {
               </Grid>
             </Grid>
           </div>
+
         )}
+
+        <Modal
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+            <img style={getModalStyle()} src={require(`../Images/Paris_${this.state.dataArron}.jpg`)} /> 
+        </Modal>
       </div>
     );
   }
