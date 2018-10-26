@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import AlgoliaPlaces from "./AlgoliaPlaces";
 import { Redirect } from 'react-router-dom';
+import Buttongeolocalisation from './Components/buttongeolocalisation';
 
 
 
@@ -14,7 +15,7 @@ class Search extends Component {
     streetname: "",
     error: false,
     responseDisplay: false,
-
+    coord: ""
   };
 
   getStreetHistory = async e => {
@@ -34,7 +35,8 @@ class Search extends Component {
         streetstory: api_data.records[0].fields.histo,
         streetname: api_data.records[0].fields.typo,
         error: false,
-        responseDisplay: true
+        responseDisplay: true,
+        coord:e.suggestion.latlng.lat+','+e.suggestion.latlng.lng
       });
       console.log('ok')
     }
@@ -84,11 +86,15 @@ class Search extends Component {
   };
 
   render() {
+    console.log(this.state.geolocplacename)
     return (
       <div>
-        <button type="button" className="geoloc" onClick={this.getLocation}>
+        {/* <button type="button" className="geoloc" >
           Locate Me !
-        </button>
+        </button> */}
+        <div className="locolisationRight" onClick={this.getLocation}>
+              <Buttongeolocalisation />
+            </div>
 
         <AlgoliaPlaces
           valeur={this.state.geolocplacename}
@@ -120,7 +126,7 @@ class Search extends Component {
             });
           }}
         />
-        {this.state.responseDisplay && <Redirect to={`/${this.state.streetname}`} />}
+        {this.state.responseDisplay && <Redirect to={`/${this.state.streetname}/${this.state.coord}`} />}
         
 
       </div>
