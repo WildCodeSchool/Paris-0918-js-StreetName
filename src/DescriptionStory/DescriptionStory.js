@@ -3,6 +3,23 @@ import "./DescriptionStory.css";
 import { Link } from "react-router-dom";
 import DisplayHisto from "./DisplayHisto";
 import DisplayMap from "./DisplayMap";
+import { Grid, Button } from '@material-ui/core';
+import Search from '../Search';
+
+import { withStyles } from '@material-ui/core/styles';
+import Autorenew from '@material-ui/icons/Autorenew';
+
+// material ui
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  extendedIcon: {
+    marginRight: theme.spacing.unit,
+  },
+});
+
+// fin material ui
 
 class DescriptionStory extends React.Component {
   state = {
@@ -16,7 +33,7 @@ class DescriptionStory extends React.Component {
   async componentWillMount() {
     const result = await fetch(
       `https://opendata.paris.fr/api/records/1.0/search/?dataset=voiesactuellesparis2012&q=${
-        this.props.match.params.typo
+      this.props.match.params.typo
       }`
     );
     const data = await result.json();
@@ -71,18 +88,32 @@ class DescriptionStory extends React.Component {
           </div>
         </div>
       );
+    // material ui
+    const { classes } = this.props;
+    // fin material ui
 
     return (
+    
+        
+      
+
       <div className="DescriptionStory">
-        <Link to="/">
-          <button type="button">Nouvelle recherche</button>
+       <Link to="/">
+       <Search />
         </Link>
+       
         {this.state.infoDisplay && (
           <div className="result">
             <h2>Origine</h2>
             <p>{this.state.dataOrigine}</p>
-            <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments}/>
-            <DisplayMap latlng={this.state.mapState}/>
+            <Grid container>
+              <Grid item xs={10} justify="flex-start">
+                <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
+              </Grid>
+              <Grid item xs={2} justify="flex-end">
+                <DisplayMap latlng={this.state.mapState} />
+              </Grid>
+            </Grid>
           </div>
         )}
       </div>
@@ -90,4 +121,4 @@ class DescriptionStory extends React.Component {
   }
 }
 
-export default DescriptionStory;
+export default withStyles(styles)(DescriptionStory);

@@ -72,7 +72,7 @@ export default class AlgoliaPlaces extends React.Component {
       ...this.props.options,
       container: this.autocompleteElem,
     });
-    const geol = document.querySelector('button')
+    const geol = document.querySelector('#loco')
     geol.addEventListener("mouseup", (event) => {
       this.autocomplete.setVal(this.props.valeur)
       this.autocomplete.open()
@@ -124,7 +124,7 @@ export default class AlgoliaPlaces extends React.Component {
           aria-label={this.props.placeholder}
           ref={(ref) => { this.autocompleteElem = ref; }}
           {...inputProps}
-        />
+        placeholder="Nom de ta rue ..."/>
         </Grid>
         <Grid item xs></Grid>
         </Grid>
