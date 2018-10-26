@@ -23,39 +23,24 @@ class DescriptionStory extends React.Component {
     console.log(data);
     const information = data.records[0].fields.histo;
     const arrayHisto = information.split(".");
+    console.log(arrayHisto);
 
-    let indexFinOrigine = "";
-    let indexFinHistorique = "";
-    for (let i = 0; i < arrayHisto.length; i++) {
-      if (arrayHisto[i].includes("Historique")) {
-        indexFinOrigine = i;
-      }
-      if (arrayHisto[i].includes("Monument classé")) {
-        indexFinHistorique = i + 1;
-      }
-    }
     const origine = arrayHisto
-      .slice(2, indexFinOrigine)
+      .slice(2, 3)
       .join(".")
       .replace("~", "");
     const historique = arrayHisto
-      .slice(indexFinOrigine + 1, indexFinHistorique - 1)
+      .slice(3, arrayHisto.length)
       .join(".")
       .replace("~", "");
-    const monuments = arrayHisto
-      .slice(indexFinHistorique)
-      .join(".")
-      .replace("~", "");
+
 
     this.setState({
       dataOrigine: origine,
       dataHistorique: historique,
-      dataMonuments: monuments,
       infoDisplay: true
     });
   }
-
-
 
   render() {
     if (!this.state.infoDisplay)
@@ -81,8 +66,11 @@ class DescriptionStory extends React.Component {
           <div className="result">
             <h2>Origine</h2>
             <p>{this.state.dataOrigine}</p>
-            <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments}/>
-            <DisplayMap latlng={this.state.mapState}/>
+            <DisplayHisto
+              histo={this.state.dataHistorique}
+              monu={this.state.dataMonuments}
+            />
+            <DisplayMap latlng={this.state.mapState} />
           </div>
         )}
       </div>

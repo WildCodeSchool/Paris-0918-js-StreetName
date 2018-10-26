@@ -25,11 +25,8 @@ class DisplayHisto extends Component {
         {this.state.renderHisto &&
         <div>
             <hr/>
-            <h2>Histoire</h2>
+            <h2>Histoire et Monuments</h2>
             <p>{this.props.histo}</p>
-            <hr/>
-            <h2>Monuments</h2>
-            <p>{this.props.monu}</p>
         </div>}
       </div>
     );
