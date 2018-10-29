@@ -74,8 +74,9 @@ export default class AlgoliaPlaces extends React.Component {
     });
     const geol = document.querySelector('#loco')
     geol.addEventListener("mouseup", (event) => {
-      this.autocomplete.setVal(this.props.valeur)
-      this.autocomplete.open()
+      setTimeout(()=>{  //timeout 380 ms pour attendre que la props s'initie
+        this.autocomplete.setVal(this.props.valeur)
+      this.autocomplete.open()},380)
     })
 
     this.autocompleteListeners = [

@@ -41,7 +41,6 @@ class SimpleExample extends React.Component {
   render() {
 
     const position = this.state.latlng.split(',');
-    
 
 
     if (this.state.latlng) {
