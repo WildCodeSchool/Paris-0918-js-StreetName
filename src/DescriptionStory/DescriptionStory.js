@@ -94,12 +94,11 @@ class DescriptionStory extends React.Component {
       );
 
     return (
-   
       <div className="DescriptionStory">
-       <Link to="/">
-       <Search />
+        <Link to="/">
+          <Search />
         </Link>
-       
+
         {this.state.infoDisplay && (
           <div className="result">
             <CardMedia
@@ -111,16 +110,21 @@ class DescriptionStory extends React.Component {
             <h2>Origine</h2>
             <p>{this.state.dataOrigine}</p>
 
-            <Grid container>
-              <Grid item xs={10} >
-                <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
-              </Grid>
-              <Grid item xs={2} >
-                <DisplayMap latlng={this.state.mapState} />
-              </Grid>
-            </Grid>
-          </div>
+              <br>
+              </br>
+            <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
+            
+            <div className="bouttongeo">
+              <DisplayMap latlng={this.state.mapState} />
+            
+            </div>
+            <br>
+              </br>
+              <br>
+              </br>
 
+          </div>
+          
         )}
 
         <Modal
