@@ -93,12 +93,7 @@ class DescriptionStory extends React.Component {
         </div>
       );
 
-
     return (
-
-
-
-
       <div className="DescriptionStory">
         <Link to="/">
           <Search />
