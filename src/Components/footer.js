@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './footer.css';
-import { Grid } from '@material-ui/core';
 
 
 class Footer extends Component {

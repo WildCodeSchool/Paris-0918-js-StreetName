@@ -1,5 +1,4 @@
 import React from "react";
-import logoMap from '../Header/baseline-map-24px.svg';
 import { Link } from "react-router-dom";
 import { Button } from '@material-ui/core';
 
