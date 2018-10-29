@@ -3,7 +3,7 @@ import "./DescriptionStory.css";
 import { Link } from "react-router-dom";
 import DisplayHisto from "./DisplayHisto";
 import DisplayMap from "./DisplayMap";
-import { Grid, CardMedia, Modal } from '@material-ui/core';
+import { CardMedia, Modal } from '@material-ui/core';
 import Search from '../Search';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -47,8 +47,10 @@ class DescriptionStory extends React.Component {
       }`
     );
     const data = await result.json();
+
     const information = data.records[0].fields.histo;
     const arrayHisto = information.split(".");
+
 
     const origine = arrayHisto
       .slice(2, 3)
@@ -79,15 +81,8 @@ class DescriptionStory extends React.Component {
   render() {
     if (!this.state.infoDisplay)
       return (
-        <div className="noCorrespondence">
-          <Link to="/">
-            <button type="button">Nouvelle recherche</button>
-          </Link>
-          <div>
-            {" "}
-            <br />
-            Pas de correspondance trouvé.
-          </div>
+        <div>
+            Loading...
         </div>
       );
 

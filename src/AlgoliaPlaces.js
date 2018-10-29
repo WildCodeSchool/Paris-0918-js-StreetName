@@ -78,7 +78,12 @@ export default class AlgoliaPlaces extends React.Component {
         this.autocomplete.setVal(this.props.valeur)
       this.autocomplete.open()},380)
     })
-
+    // const clear = document.querySelector('#buttonClear')
+    // clear.addEventListener("mouseup", (event) => {
+    //   setTimeout(()=>{  //timeout 380 ms pour attendre que la props s'initie
+    //     this.autocomplete.setVal('')
+    //   },380)
+    // })
     this.autocompleteListeners = [
       'onSuggestions',
       'onCursorChanged',
