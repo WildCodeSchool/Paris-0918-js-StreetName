@@ -93,12 +93,8 @@ class DescriptionStory extends React.Component {
         </div>
       );
 
-
     return (
-    
-        
-      
-
+   
       <div className="DescriptionStory">
        <Link to="/">
        <Search />
@@ -131,7 +127,9 @@ class DescriptionStory extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
         >
+
             <img style={getModalStyle()} src={require(`../Images/Paris_${this.state.dataArron}.jpg`)} alt={`Paris ${this.state.dataArron} arrondissement`}/> 
+
         </Modal>
       </div>
     );
