@@ -19,6 +19,7 @@ const styles = theme => ({
 class DisplayHisto extends Component {
     state = {
         renderHisto: false,
+        histoState: this.props.histo.length,
         readButtonState: true,
         open: false
     }
@@ -42,18 +43,22 @@ class DisplayHisto extends Component {
 
     let readText = "";
     this.state.readButtonState ? readText = "En savoir plus" : readText = "Réduire";
-
+    
     // material UI
     const { classes } = this.props;
+    console.log(this.state.histoState);
     // FIN MATERIAL UI
 
     return (
       
       <div className='styleresult'>
+      
+       
+       {this.state.histoState !== 0 ?
        <Button variant="outlined" color="primary" className={classes.button}  onClick={this.switchHisto}>{readText}
       
-      </Button>
-        
+      </Button>: <Button variant="outlined" color="primary" className={classes.button}>Pas d'histoire disponible</Button>
+    }
         
         {this.state.renderHisto &&
         <div>
