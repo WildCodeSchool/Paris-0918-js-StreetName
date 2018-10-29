@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import './Displayhisto.css';
-
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+
+
 
 // material UI
 const styles = theme => ({
@@ -18,7 +19,8 @@ const styles = theme => ({
 class DisplayHisto extends Component {
     state = {
         renderHisto: false,
-        readButtonState: true
+        readButtonState: true,
+        open: false
     }
 
     switchHisto = () => {
@@ -28,6 +30,13 @@ class DisplayHisto extends Component {
         })
     }
 
+    handleClickOpen = () => {
+      this.setState({ open: true });
+    };
+  
+    handleClose = () => {
+      this.setState({ open: false });
+    };
 
   render() {
 
@@ -39,10 +48,12 @@ class DisplayHisto extends Component {
     // FIN MATERIAL UI
 
     return (
+      
       <div className='styleresult'>
        <Button variant="outlined" color="primary" className={classes.button}  onClick={this.switchHisto}>{readText}
-        
+      
       </Button>
+        
         
         {this.state.renderHisto &&
         <div>

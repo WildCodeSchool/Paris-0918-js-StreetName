@@ -16,16 +16,19 @@ const stylesH1 = withStyles => ({
     coloricon: {
         color: 'white',
         height: '35px',
-        width: '35px',
-    }
+        width: '35px'
+    },
+
+   
 });
 
 
 class Buttongeolocalisation extends Component {
+    
     render() {
         return (
             <div >
-                <Button id="loco" className="buttonlocaloca" className={this.props.classes.colorboutton} variant="fab" aria-label="Add" >
+                <Button id="loco" className="buttonlocaloca" className={this.props.classes.colorboutton} variant="fab" aria-label="Add" Onclick={this.setState.colorboutton}>
                     <MyLocation className="stylebuttongeo" className={this.props.classes.coloricon} />
                 </Button>
             </div>

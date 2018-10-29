@@ -1,10 +1,13 @@
 import React from 'react'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import './Maps.css';
+import { Link } from 'react-router-dom';
+import ClearIcon from '@material-ui/icons/Clear';
+
+
 
 const styles = theme => ({
   button: {
@@ -38,13 +41,15 @@ class SimpleExample extends React.Component {
   render() {
 
     const position = this.state.latlng.split(',');
-    const { classes } = this.props;
+    
 
 
     if (this.state.latlng) {
       return (
         <div className="map">
-          <Map center={position} style={{ width: '100%', height: '80vh'}} zoom={this.state.zoom}>
+          <Link to="/">
+            <button className="buttonx"> <ClearIcon /> </button></Link>
+          <Map center={position} style={{ width: '100%', height: '80vh' }} zoom={this.state.zoom}>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -53,6 +58,8 @@ class SimpleExample extends React.Component {
 
             </Marker>
           </Map>
+
+
 
 
         </div>

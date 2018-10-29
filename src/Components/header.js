@@ -4,7 +4,7 @@ import logo from '../Header/317354-200.png';
 import { Link } from "react-router-dom";
 
 
-import { AppBar, Toolbar, Typography, Grid, Button, Icon } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Grid } from '@material-ui/core';
 
 
 
@@ -19,17 +19,17 @@ class Header extends Component {
             <Grid container className="logofirst" >
 
               <Grid item xs={1} justify="flex-start">
-              <Link to="/">
-       <img src={logo} className="Style-logo" alt="logo" />
-        </Link>
+                <Link to="/">
+                  <img src={logo} className="Style-logo" alt="logo" />
+                </Link>
               </Grid>
               <Grid item xs={10} justify="flex-end">
-                <Typography color="inherit" variant="h5" className="textetitre" >
+                <Typography color="inherit" variant="h6" className="textetitre" >
                   StreetName Paris</Typography>
               </Grid>
               <Grid item xs={1} justify="flex-end">
-                
-               </Grid>
+
+              </Grid>
             </Grid>
           </Toolbar>
         </AppBar>

@@ -1,6 +1,13 @@
 .map{
-    transform:translate(-10%,1%);
+    transform:translate(-8%,-7%);
+    width:80%;
 }
 
+.buttonx{
+    border: none;
+    width: 8%;
+    height: 22px;
+    margin-left: 80%; 
+    background-color: transparent;
 
-
+}
