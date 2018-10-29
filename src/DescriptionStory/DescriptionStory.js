@@ -3,11 +3,10 @@ import "./DescriptionStory.css";
 import { Link } from "react-router-dom";
 import DisplayHisto from "./DisplayHisto";
 import DisplayMap from "./DisplayMap";
-import { Grid, Button, CardMedia, Modal } from '@material-ui/core';
+import { Grid, CardMedia, Modal } from '@material-ui/core';
 import Search from '../Search';
 
 import { withStyles } from '@material-ui/core/styles';
-import Autorenew from '@material-ui/icons/Autorenew';
 
 // material ui
 const styles = theme => ({
@@ -93,9 +92,7 @@ class DescriptionStory extends React.Component {
           </div>
         </div>
       );
-    // material ui
-    const { classes } = this.props;
-    // fin material ui
+
 
     return (
 
@@ -130,6 +127,7 @@ class DescriptionStory extends React.Component {
               </br>
               <br>
               </br>
+
           </div>
           
         )}
@@ -138,7 +136,9 @@ class DescriptionStory extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
         >
-          <img style={getModalStyle()} src={require(`../Images/Paris_${this.state.dataArron}.jpg`)} />
+
+            <img style={getModalStyle()} src={require(`../Images/Paris_${this.state.dataArron}.jpg`)} alt={`Paris ${this.state.dataArron} arrondissement`}/> 
+
         </Modal>
       </div>
     );
