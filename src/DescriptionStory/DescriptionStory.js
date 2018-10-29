@@ -47,10 +47,8 @@ class DescriptionStory extends React.Component {
       }`
     );
     const data = await result.json();
-    console.log(data);
     const information = data.records[0].fields.histo;
     const arrayHisto = information.split(".");
-    console.log(arrayHisto);
 
     const origine = arrayHisto
       .slice(2, 3)
@@ -61,7 +59,7 @@ class DescriptionStory extends React.Component {
       .join(".")
       .replace("~", "");
 
-
+    console.log(historique.length)
     this.setState({
       dataOrigine: origine,
       dataHistorique: historique,
