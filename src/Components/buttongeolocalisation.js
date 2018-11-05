@@ -9,14 +9,14 @@ import { withStyles } from '@material-ui/core/styles';
 
 const stylesH1 = withStyles => ({
     colorboutton: {
-        backgroundColor: '#5177F6',
-        height: '80px',
-        width: '80px'
+        backgroundColor: '#000000',
+        height: '50px',
+        width: '50px'
     },
     coloricon: {
         color: 'white',
-        height: '35px',
-        width: '35px'
+        height: '20px',
+        width: '20px'
     },
 
    

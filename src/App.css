@@ -1,7 +1,4 @@
-*{
-  padding: 0;
-  margin: 0;
-}
+
 .App {
   text-align: center;
   width: 100%;
@@ -13,15 +10,21 @@
   background: url('./image/imagefond.jpg') center no-repeat fixed;
   opacity: 0.9;
   background-size: cover;
-  padding-bottom: 20px;
+  
 }
 .container {
   position: relative;
 }
 .locolisationRight {
   position: absolute;
-  bottom: 25px;
+  top: 25px;
   right: 16px; 
 }
 
+.instructionfuck {
+  display: none;
+}
 
+.champsinput::placeholder {
+  color: red;
+}
