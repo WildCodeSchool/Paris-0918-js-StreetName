@@ -3,11 +3,10 @@ import "./DescriptionStory.css";
 import { Link } from "react-router-dom";
 import DisplayHisto from "./DisplayHisto";
 import DisplayMap from "./DisplayMap";
-import { Grid, Button, CardMedia, Modal } from '@material-ui/core';
+import { CardMedia, Modal } from '@material-ui/core';
 import Search from '../Search';
 
 import { withStyles } from '@material-ui/core/styles';
-import Autorenew from '@material-ui/icons/Autorenew';
 
 // material ui
 const styles = theme => ({
@@ -48,10 +47,10 @@ class DescriptionStory extends React.Component {
       }`
     );
     const data = await result.json();
-    console.log(data);
+
     const information = data.records[0].fields.histo;
     const arrayHisto = information.split(".");
-    console.log(arrayHisto);
+
 
     const origine = arrayHisto
       .slice(2, 3)
@@ -62,7 +61,7 @@ class DescriptionStory extends React.Component {
       .join(".")
       .replace("~", "");
 
-
+    console.log(historique.length)
     this.setState({
       dataOrigine: origine,
       dataHistorique: historique,
@@ -82,31 +81,17 @@ class DescriptionStory extends React.Component {
   render() {
     if (!this.state.infoDisplay)
       return (
-        <div className="noCorrespondence">
-          <Link to="/">
-            <button type="button">Nouvelle recherche</button>
-          </Link>
-          <div>
-            {" "}
-            <br />
-            Pas de correspondance trouvé.
-          </div>
+        <div>
+            Loading...
         </div>
       );
-    // material ui
-    const { classes } = this.props;
-    // fin material ui
 
     return (
-    
-        
-      
-
       <div className="DescriptionStory">
-       <Link to="/">
-       <Search />
+        <Link to="/">
+          <Search />
         </Link>
-       
+
         {this.state.infoDisplay && (
           <div className="result">
             <CardMedia
@@ -118,23 +103,30 @@ class DescriptionStory extends React.Component {
             <h2>Origine</h2>
             <p>{this.state.dataOrigine}</p>
 
-            <Grid container>
-              <Grid item xs={10} justify="flex-start">
-                <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
-              </Grid>
-              <Grid item xs={2} justify="flex-end">
-                <DisplayMap latlng={this.state.mapState} />
-              </Grid>
-            </Grid>
-          </div>
+              <br>
+              </br>
+            <DisplayHisto histo={this.state.dataHistorique} monu={this.state.dataMonuments} />
+            
+            <div className="bouttongeo">
+              <DisplayMap latlng={this.state.mapState} />
+            
+            </div>
+            <br>
+              </br>
+              <br>
+              </br>
 
+          </div>
+          
         )}
 
         <Modal
           open={this.state.open}
           onClose={this.handleClose}
         >
-            <img style={getModalStyle()} src={require(`../Images/Paris_${this.state.dataArron}.jpg`)} /> 
+
+            <img style={getModalStyle()} src={require(`../Images/Paris_${this.state.dataArron}.jpg`)} alt={`Paris ${this.state.dataArron} arrondissement`}/> 
+
         </Modal>
       </div>
     );

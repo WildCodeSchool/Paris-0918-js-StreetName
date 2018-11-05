@@ -9,23 +9,26 @@ import { withStyles } from '@material-ui/core/styles';
 
 const stylesH1 = withStyles => ({
     colorboutton: {
-        backgroundColor: '#5177F6',
-        height: '80px',
-        width: '80px'
+        backgroundColor: '#000000',
+        height: '50px',
+        width: '50px'
     },
     coloricon: {
         color: 'white',
-        height: '35px',
-        width: '35px',
-    }
+        height: '20px',
+        width: '20px'
+    },
+
+   
 });
 
 
 class Buttongeolocalisation extends Component {
+    
     render() {
         return (
             <div >
-                <Button id="loco" className="buttonlocaloca" className={this.props.classes.colorboutton} variant="fab" aria-label="Add" >
+                <Button id="loco" className="buttonlocaloca" className={this.props.classes.colorboutton} variant="fab" aria-label="Add" Onclick={this.setState.colorboutton}>
                     <MyLocation className="stylebuttongeo" className={this.props.classes.coloricon} />
                 </Button>
             </div>

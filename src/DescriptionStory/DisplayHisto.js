@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import './Displayhisto.css';
-
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+
+
 
 // material UI
 const styles = theme => ({
@@ -18,7 +19,9 @@ const styles = theme => ({
 class DisplayHisto extends Component {
     state = {
         renderHisto: false,
-        readButtonState: true
+        histoState: this.props.histo.length,
+        readButtonState: true,
+        open: false
     }
 
     switchHisto = () => {
@@ -28,21 +31,34 @@ class DisplayHisto extends Component {
         })
     }
 
+    handleClickOpen = () => {
+      this.setState({ open: true });
+    };
+  
+    handleClose = () => {
+      this.setState({ open: false });
+    };
 
   render() {
 
     let readText = "";
     this.state.readButtonState ? readText = "En savoir plus" : readText = "Réduire";
-
+    
     // material UI
     const { classes } = this.props;
+    console.log(this.state.histoState);
     // FIN MATERIAL UI
 
     return (
+      
       <div className='styleresult'>
+      
+       
+       {this.state.histoState !== 0 ?
        <Button variant="outlined" color="primary" className={classes.button}  onClick={this.switchHisto}>{readText}
-        
-      </Button>
+      
+      </Button>: <Button variant="outlined" color="primary" className={classes.button}>Pas d'histoire disponible</Button>
+    }
         
         {this.state.renderHisto &&
         <div>

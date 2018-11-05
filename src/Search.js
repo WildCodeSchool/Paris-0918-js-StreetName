@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import AlgoliaPlaces from "./AlgoliaPlaces";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Buttongeolocalisation from './Components/buttongeolocalisation';
 
 
@@ -15,8 +15,15 @@ class Search extends Component {
     streetname: "",
     error: false,
     responseDisplay: false,
-    coord: ""
+    coord: "",
   };
+  
+  getClear = () => {
+    this.setState({error: false})
+  }
+  getButtonDisplay = () => {
+    this.setState({buttonGeolocDisplay: false})
+  }
 
   getStreetHistory = async e => {
     const input_rue = e.suggestion.name;
@@ -36,9 +43,9 @@ class Search extends Component {
         streetname: api_data.records[0].fields.typo,
         error: false,
         responseDisplay: true,
-        coord:e.suggestion.latlng.lat+','+e.suggestion.latlng.lng
+        coord: e.suggestion.latlng.lat + ',' + e.suggestion.latlng.lng,
+        buttonGeolocDisplay: false 
       });
-      console.log('ok')
     }
     catch (error) {
       this.setState({ error: true });
@@ -56,7 +63,9 @@ class Search extends Component {
       }
 
       const data = await response.json();
-      this.setState({ geolocplacename: data.hits[0].locale_names });
+      this.setState({ 
+        geolocplacename: data.hits[0].locale_names
+      });
     }
     catch (error) {
       console.log(error);
@@ -86,15 +95,12 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.state.geolocplacename)
     return (
       <div>
-        {/* <button type="button" className="geoloc" >
-          Locate Me !
-        </button> */}
-        <div className="locolisationRight" onClick={this.getLocation}>
-              <Buttongeolocalisation />
-            </div>
+          <div className='locolisationRight' onClick={this.getLocation}>
+            <Buttongeolocalisation />
+          </div>
+        
 
         <AlgoliaPlaces
           valeur={this.state.geolocplacename}
@@ -125,9 +131,10 @@ class Search extends Component {
               rueSelection
             });
           }}
-        />
+        /> 
+        {this.state.error && 
+          <Redirect to='/error' />}
         {this.state.responseDisplay && <Redirect to={`/${this.state.streetname}/${this.state.coord}`} />}
-        
 
       </div>
     );

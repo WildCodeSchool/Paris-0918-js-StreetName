@@ -26,16 +26,25 @@
   width: 70%;
   margin-left: 10%;
   margin-top: 8%;
-  padding: 5%;
+  padding-bottom: 67px;
+  
   font-size: 14px;
   border: 3px #ccc solid;
   border-radius: 10px;
-  
   background: rgba(246, 244, 243, 0.4);
   font-family: "Nova Flat";
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  padding: 2px 16px;
+  padding: 5px 16px;
+  position: relative;
+  
 }
+
+.bouttongeo {
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+}
+
 
 h1{
   letter-spacing: 5px;

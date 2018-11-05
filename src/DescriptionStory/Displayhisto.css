@@ -1,3 +1,21 @@
-/* .styleresult {
-    background-color: black;
-} */
+/*.styleresult {
+    overflow: scroll;
+     background-color: black; 
+
+} 
+
+scroll-container {
+    display: block;
+    width: 120%;
+    height: 5%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+  scroll-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2%;
+    font-size: 1em;
+  } 
+ */

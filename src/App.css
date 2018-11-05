@@ -6,23 +6,19 @@
 }
 
 .bgimg {
-  height: 97.4vh;
-  width: 100%;
-  background: url('./image/imagefond.jpg');
+  min-height: 100vh ;
+  background: url('./image/imagefond.jpg') center no-repeat fixed;
   opacity: 0.9;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  /* background-color: yellowgreen; */
+  
 }
 .container {
   position: relative;
 }
 .locolisationRight {
   position: absolute;
-  bottom: 40px;
-  right: 16px;
-   
+  top: 25px;
+  right: 16px; 
 }
 
 .instructionfuck {

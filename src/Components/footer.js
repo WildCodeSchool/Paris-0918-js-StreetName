@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './footer.css';
-import { Grid } from '@material-ui/core';
 
 
 class Footer extends Component {
@@ -9,7 +8,7 @@ class Footer extends Component {
            
             <div className="footerstyle">
                 
-         <p>  MADE WITH <span className="heart">❤</span> AT THE WILD CODE SCHOOL </p>
+           MADE WITH <span className="heart">❤</span> AT THE WILD CODE SCHOOL 
        
           </div>
           
