@@ -1,7 +1,4 @@
-*{
-  padding: 0;
-  margin: 0;
-}
+
 .App {
   text-align: center;
   width: 100%;
@@ -28,3 +25,10 @@
    
 }
 
+.instructionfuck {
+  display: none;
+}
+
+.champsinput::placeholder {
+  color: red;
+}
