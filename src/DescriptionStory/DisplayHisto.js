@@ -46,7 +46,6 @@ class DisplayHisto extends Component {
     
     // material UI
     const { classes } = this.props;
-    console.log(this.state.histoState);
     // FIN MATERIAL UI
 
     return (

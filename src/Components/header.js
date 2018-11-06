@@ -17,16 +17,16 @@ class Header extends Component {
         <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none' }}>
           <Toolbar>
             <Grid container >
-              <Grid item xs={1} justify="flex-start">
+              <Grid item xs={1} >
                 <Link to="/">
                   <img src={logo} className="Style-logo" alt="logo" />
                 </Link>
               </Grid>
-              <Grid item xs={10} justify="flex-end">
+              <Grid item xs={10} >
                 <Typography color="inherit" variant="h6" className="textetitre" >
                   StreetName Paris</Typography>
               </Grid>
-              <Grid item xs={1} justify="flex-end">
+              <Grid item xs={1} >
 
               </Grid>
 

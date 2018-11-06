@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import AlgoliaPlaces from "./AlgoliaPlaces";
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Buttongeolocalisation from './Components/buttongeolocalisation';
 
 

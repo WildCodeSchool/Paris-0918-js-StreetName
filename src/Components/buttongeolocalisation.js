@@ -28,8 +28,8 @@ class Buttongeolocalisation extends Component {
     render() {
         return (
             <div >
-                <Button id="loco" className="buttonlocaloca" className={this.props.classes.colorboutton} variant="fab" aria-label="Add" Onclick={this.setState.colorboutton}>
-                    <MyLocation className="stylebuttongeo" className={this.props.classes.coloricon} />
+                <Button id="loco" className={this.props.classes.colorboutton} variant="fab" aria-label="Add" onClick={this.setState.colorboutton}>
+                    <MyLocation className={this.props.classes.coloricon} />
                 </Button>
             </div>
         )
