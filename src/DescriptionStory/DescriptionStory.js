@@ -61,7 +61,6 @@ class DescriptionStory extends React.Component {
       .join(".")
       .replace("~", "");
 
-    console.log(historique.length)
     this.setState({
       dataOrigine: origine,
       dataHistorique: historique,
